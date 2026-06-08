@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Montserrat", sans-serif;
+  --color-midnight: #0F1626;
+  --color-sand: #DCCDB2;
+  --color-chalk: #F5F3EE;
+  --color-matte: #111418;
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: "Cormorant Garamond", Georgia, serif;
+  }
+  .font-sans {
+    font-family: "Montserrat", sans-serif;
+  }
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #F5F3EE; /* chalk */
+  color: #111418; /* matte */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Premium micro-interactions */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hide navigation scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
