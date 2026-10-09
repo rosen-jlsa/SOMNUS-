@@ -19,7 +19,7 @@ From the repository root, run `python -m http.server 8765` and open `http://loca
 
 ## Upload as an unpublished Shopify theme
 
-Run `shopify theme package` from the repository root. Upload the resulting ZIP in Shopify Admin → Online Store → Themes → Add theme → Upload zip file. The theme includes a home page, product page, cart and 404 page. Keep it unpublished while reviewing the concept. A packaged copy is also provided separately with this project handoff.
+Run `shopify theme package` from the repository root. Upload the resulting ZIP in Shopify Admin → Online Store → Themes → Add theme → Upload zip file. The theme includes a home page, product page, cart and 404 page. Keep it unpublished while reviewing the concept.
 
 ## Add to an existing unpublished theme
 
