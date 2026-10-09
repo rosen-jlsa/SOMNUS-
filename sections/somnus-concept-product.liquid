@@ -1,0 +1,128 @@
+{{ 'concept-page.css' | asset_url | stylesheet_tag }}
+
+<section class="concept-page" id="somnus-{{ section.id }}">
+  <div class="notice">Concept storefront · design and development portfolio</div>
+  <div class="wrap topbar">
+    <a class="wordmark" href="#somnus-{{ section.id }}" aria-label="SOMNUS, back to top">SOMNUS</a>
+    <a class="toplink" href="#somnus-product-{{ section.id }}">Explore the concept</a>
+  </div>
+
+  <div class="hero">
+    {% if section.settings.hero_image != blank %}
+      {{ section.settings.hero_image | image_url: width: 2200 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1500, 2200', alt: 'Amber bottle beside linen at dusk' }}
+    {% else %}
+      <img src="{{ 'somnus-hero.png' | asset_url }}" alt="Amber bottle beside linen at dusk" loading="eager" fetchpriority="high" width="1672" height="940">
+    {% endif %}
+    <div class="wrap hero-copy">
+      <div class="eyebrow">{{ section.settings.eyebrow | escape }}</div>
+      <h1>{{ section.settings.hero_heading | escape }}</h1>
+      <p>{{ section.settings.hero_text | escape }}</p>
+      <a class="button" href="#somnus-product-{{ section.id }}">{{ section.settings.hero_button | escape }}</a>
+    </div>
+  </div>
+
+  <div class="wrap intro">
+    <h2>{{ section.settings.intro_heading | escape }}</h2>
+    <p>{{ section.settings.intro_text | escape }}</p>
+  </div>
+
+  <div class="split">
+    <div class="split-media">
+      {% if section.settings.detail_image != blank %}
+        {{ section.settings.detail_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500, 800, 1200', alt: 'Quiet evening on linen and stone' }}
+      {% else %}
+        <img src="{{ 'somnus-detail.png' | asset_url }}" alt="Quiet evening on linen and stone" loading="lazy" width="1254" height="1254">
+      {% endif %}
+    </div>
+    <div class="split-copy">
+      <div class="eyebrow">The design idea</div>
+      <h2>{{ section.settings.story_heading | escape }}</h2>
+      <p>{{ section.settings.story_text | escape }}</p>
+      <a class="button" href="#somnus-product-{{ section.id }}">See the product layout</a>
+    </div>
+  </div>
+
+  <div class="wrap values">
+    <div class="values-head"><div><div class="eyebrow">Designed with intention</div><h2>An unhurried path through the story.</h2></div></div>
+    <div class="value-grid">
+      <div class="value"><span>01 / Clarity</span><h3>Focused hierarchy</h3><p>One primary message, simple navigation and a direct path to the product.</p></div>
+      <div class="value"><span>02 / Detail</span><h3>Evening atmosphere</h3><p>Original evening imagery and a gentle palette establish a distinctive mood.</p></div>
+      <div class="value"><span>03 / Mobile</span><h3>Responsive by design</h3><p>The layout adapts to smaller screens without losing its visual rhythm.</p></div>
+    </div>
+  </div>
+
+  {% if product != blank %}{% assign selected_variant = product.selected_or_first_available_variant %}{% endif %}
+  <div class="product-panel" id="somnus-product-{{ section.id }}">
+    <div class="wrap product-layout">
+      <div class="product-image">
+        {% if product != blank and selected_variant.featured_media.media_type == 'image' %}
+          {{ selected_variant.featured_media | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500, 800, 1200', alt: product.title, class: 'product-image-main' }}
+        {% elsif product != blank and product.featured_image != blank %}
+          {{ product.featured_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500, 800, 1200', alt: product.title, class: 'product-image-main' }}
+        {% else %}
+          <img src="{{ 'somnus-detail.png' | asset_url }}" alt="Concept image of a quiet evening" loading="lazy" width="1254" height="1254">
+        {% endif %}
+      </div>
+      <div class="product-copy">
+        <div class="eyebrow">Shopify product section</div>
+        <h2>{% if product != blank %}{{ product.title | escape }}{% else %}SOMNUS Ritual Concept{% endif %}</h2>
+        {% if product != blank %}
+          <p>{{ product.description | strip_html | truncate: 240 }}</p>
+          <div class="price" data-price>{{ selected_variant.price | money }}</div>
+          {% assign form_id = 'somnus-form-' | append: section.id %}
+          {% form 'product', product, id: form_id, class: 'product-form' %}
+            <label for="somnus-variant-{{ section.id }}">Option</label>
+            <select id="somnus-variant-{{ section.id }}" name="id" data-variant-select>
+              {% for variant in product.variants %}
+                <option value="{{ variant.id }}" data-price="{{ variant.price | money | escape }}" {% if variant.featured_media.media_type == 'image' %}data-image="{{ variant.featured_media | image_url: width: 1200 }}"{% endif %} {% if variant.id == selected_variant.id %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>{{ variant.title | escape }}{% unless variant.available %} — sold out{% endunless %}</option>
+              {% endfor %}
+            </select>
+            <button class="button" type="submit" {% unless product.available %}disabled{% endunless %}>{% if product.available %}Add to cart{% else %}Sold out{% endif %}</button>
+          {% endform %}
+        {% else %}
+          <p>This is a concept storefront. Connect a real Shopify product to enable pricing and cart actions.</p>
+          <p class="prototype-note">No health claims, customer reviews or test results are represented here.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap foot"><strong>SOMNUS</strong><span>Concept Shopify product page · responsive design, imagery and Liquid implementation</span></div>
+</section>
+
+<script>
+  (() => {
+    const root = document.getElementById('somnus-{{ section.id }}');
+    const select = root && root.querySelector('[data-variant-select]');
+    const price = root && root.querySelector('[data-price]');
+    const image = root && root.querySelector('.product-image-main');
+    const originalImage = image && image.src;
+    if (select && price) select.addEventListener('change', () => {
+      const option = select.options[select.selectedIndex];
+      price.textContent = option.dataset.price || '';
+      if (image) {
+        image.removeAttribute('srcset');
+        image.src = option.dataset.image || originalImage;
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "SOMNUS concept product",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image (optional)" },
+    { "type": "image_picker", "id": "detail_image", "label": "Detail image (optional)" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "A calmer evening begins here" },
+    { "type": "text", "id": "hero_heading", "label": "Hero heading", "default": "Make room for rest." },
+    { "type": "text", "id": "hero_text", "label": "Hero text", "default": "A quiet product page concept shaped by ritual, warmth and thoughtful simplicity." },
+    { "type": "text", "id": "hero_button", "label": "Hero button", "default": "Explore the concept" },
+    { "type": "text", "id": "intro_heading", "label": "Introduction heading", "default": "A softer end to the day." },
+    { "type": "textarea", "id": "intro_text", "label": "Introduction text", "default": "SOMNUS explores a calm shopping experience with atmospheric photography, clear product information and a responsive layout." },
+    { "type": "text", "id": "story_heading", "label": "Story heading", "default": "A ritual of stillness." },
+    { "type": "textarea", "id": "story_text", "label": "Story text", "default": "Warm light and natural materials create a quiet mood. This concept does not suggest any verified health benefit." }
+  ],
+  "presets": [{ "name": "SOMNUS concept product" }]
+}
+{% endschema %}

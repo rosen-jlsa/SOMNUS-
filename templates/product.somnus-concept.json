@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "somnus-concept-product",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
