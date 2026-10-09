@@ -19,7 +19,7 @@ From the repository root, run `python -m http.server 8765` and open `http://loca
 
 ## Add to an unpublished Shopify theme
 
-1. Copy `assets/concept-page.css`, `assets/somnus-hero.png`, `assets/somnus-detail.png`, `sections/somnus-concept-product.liquid`, and `templates/product.somnus-concept.json` to the same paths in the theme.
+1. Copy `assets/concept-page.css`, the three `assets/somnus-*.png` images, `sections/somnus-concept-product.liquid`, and `templates/product.somnus-concept.json` to the same paths in the theme.
 2. Assign the `somnus-concept` template to a **test product** in Shopify Admin.
 3. Use the unpublished theme editor to adjust copy and optionally select new images.
 4. Preview desktop and mobile. Check product details, variants, price, cart behavior and any regulatory claims before commercial use.
@@ -33,7 +33,7 @@ The concept imagery uses generic packaging. Replace it with approved product pho
 | `sections/somnus-concept-product.liquid` | Shopify section and product form |
 | `templates/product.somnus-concept.json` | Online Store 2.0 product template |
 | `assets/concept-page.css` | Responsive visual system |
-| `assets/somnus-hero.png`, `assets/somnus-detail.png` | AI-generated concept imagery |
+| `assets/somnus-hero.png`, `assets/somnus-detail.png`, `assets/somnus-product.png` | AI-generated concept imagery |
 | `preview/index.html` | Standalone visual preview |
 | `src/` | Earlier React/Vite prototype, retained as project history |
 
@@ -41,5 +41,6 @@ The concept imagery uses generic packaging. Replace it with approved product pho
 
 - Hero: generic amber bottle beside linen and travertine at dusk, warm, minimal, no text or logo.
 - Detail: quiet bedroom at blue hour with soft linen and warm lamp light, no people or product claims.
+- Product: generic dark amber bottle on travertine, muted sage studio setting, no label or claims.
 
 The images were created with the built-in image generation tool and saved in `assets/` for this project.

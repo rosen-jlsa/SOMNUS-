@@ -60,7 +60,7 @@
         {% elsif product != blank and product.featured_image != blank %}
           {{ product.featured_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500, 800, 1200', alt: product.title, class: 'product-image-main' }}
         {% else %}
-          <img src="{{ 'somnus-detail.png' | asset_url }}" alt="Concept image of a quiet evening" loading="lazy" width="1254" height="1254">
+          <img src="{{ 'somnus-product.png' | asset_url }}" alt="Generic concept amber bottle on travertine" loading="lazy" width="1254" height="1254">
         {% endif %}
       </div>
       <div class="product-copy">
