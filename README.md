@@ -17,7 +17,11 @@ The work is aligned with clean landing pages, responsive design and Shopify them
 
 From the repository root, run `python -m http.server 8765` and open `http://localhost:8765/preview/`. The preview is visual only; pricing, inventory and cart actions work through Shopify after the template is assigned to a product.
 
-## Add to an unpublished Shopify theme
+## Upload as an unpublished Shopify theme
+
+Run `shopify theme package` from the repository root. Upload the resulting ZIP in Shopify Admin → Online Store → Themes → Add theme → Upload zip file. The theme includes a home page, product page, cart and 404 page. Keep it unpublished while reviewing the concept. A packaged copy is also provided separately with this project handoff.
+
+## Add to an existing unpublished theme
 
 1. Copy `assets/concept-page.css`, the three `assets/somnus-*.png` images, `sections/somnus-concept-product.liquid`, and `templates/product.somnus-concept.json` to the same paths in the theme.
 2. Assign the `somnus-concept` template to a **test product** in Shopify Admin.
@@ -35,6 +39,7 @@ The concept imagery uses generic packaging. Replace it with approved product pho
 | `assets/concept-page.css` | Responsive visual system |
 | `assets/somnus-hero.png`, `assets/somnus-detail.png`, `assets/somnus-product.png` | AI-generated concept imagery |
 | `preview/index.html` | Standalone visual preview |
+| `layout/theme.liquid`, `templates/`, `config/`, `locales/` | Minimal uploadable Shopify theme structure |
 | `src/` | Earlier React/Vite prototype, retained as project history |
 
 ## Concept image prompts

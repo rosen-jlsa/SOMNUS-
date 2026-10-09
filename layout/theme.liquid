@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f2f2e9">
+    <title>{{ page_title | escape }}{% if shop.name != blank %} · {{ shop.name | escape }}{% endif %}</title>
+    {% if page_description != blank %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+    <link rel="canonical" href="{{ canonical_url }}">
+    {{ content_for_header }}
+    <style>.skip-link{position:absolute;left:-9999px;top:0;padding:12px;background:#fff;color:#111;z-index:999}.skip-link:focus{left:12px;top:12px}</style>
+  </head>
+  <body style="margin:0">
+    <a class="skip-link" href="#MainContent">Skip to content</a>
+    <main id="MainContent">{{ content_for_layout }}</main>
+  </body>
+</html>
