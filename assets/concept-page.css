@@ -10,3 +10,18 @@
 @media(max-width:760px){.concept-page .wrap{width:min(100% - 32px,1240px)}.concept-page .topbar{padding:18px 0}.concept-page .hero{min-height:720px;align-items:start}.concept-page .hero img{height:65%;top:auto;object-position:70% center}.concept-page .hero:after{background:linear-gradient(180deg,var(--paper) 0%,rgba(242,242,233,.97) 62%,rgba(242,242,233,.08) 100%)}.concept-page .hero-copy{padding:65px 0}.concept-page .hero h1{font-size:clamp(3.3rem,13vw,5rem)}.concept-page .intro,.concept-page .split,.concept-page .product-layout{grid-template-columns:1fr}.concept-page .intro{gap:24px;padding:70px 0}.concept-page .split-media{min-height:390px}.concept-page .split-copy{padding:60px 24px}.concept-page .values{padding:75px 0}.concept-page .values-head{display:block}.concept-page .value-grid{grid-template-columns:1fr;gap:35px}.concept-page .product-panel{padding:65px 0}.concept-page .product-layout{gap:40px}.concept-page .foot{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.concept-page .button{transition:none}}
 .concept-page a:focus-visible,.concept-page button:focus-visible,.concept-page select:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+
+/* Rebuilt dusk palette and editorial hero. */
+.concept-page{--ink:#ece9df;--muted:#b5b9b4;--paper:#18212a;--panel:#26343b;--accent:#c7ae89;--line:#44505a}
+.concept-page .notice{background:#a99576;color:#19232d}
+.concept-page .hero{display:block;min-height:690px;background:var(--paper)}
+.concept-page .hero:after{display:none}
+.concept-page .hero img{left:0;width:49%;height:100%;object-position:center}
+.concept-page .hero-copy{width:51%;max-width:none;margin-left:49%;padding:clamp(70px,8vw,130px) 6vw}
+.concept-page .hero h1{font-size:clamp(3.6rem,6.2vw,6.8rem)}
+.concept-page .button{background:#d2b990;color:#17212a!important;border-color:#d2b990;letter-spacing:.06em;text-transform:none}
+.concept-page .button:hover{background:#f2d8ab;color:#17212a!important}
+.concept-page .product-panel{background:#26343b}
+.concept-page .product-form select{background:#18212a;color:#ece9df}
+.concept-page .price{color:#ece9df}
+@media(max-width:760px){.concept-page .hero{min-height:770px}.concept-page .hero img{left:0;top:auto;width:100%;height:52%}.concept-page .hero:after{display:block;background:linear-gradient(180deg,var(--paper) 0%,var(--paper) 44%,transparent 70%)}.concept-page .hero-copy{width:min(100% - 32px,1240px);margin:auto;padding:52px 0}.concept-page .hero h1{font-size:clamp(3.3rem,12vw,5rem)}}

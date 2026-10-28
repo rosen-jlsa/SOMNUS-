@@ -2,14 +2,14 @@
 
 A calm, responsive Shopify product-page concept for a fictional wellness brand. This is a **portfolio project**, not a live supplement or a claim about sleep or health outcomes.
 
-![SOMNUS editorial hero](assets/somnus-hero.png)
+![SOMNUS editorial hero](assets/somnus-hero.jpg)
 
 ## What I built
 
 - An Online Store 2.0 product section in Liquid, with editable copy and image settings.
 - A JSON product template that can be assigned to a test product.
 - An atmospheric, mobile-friendly page with original concept imagery and a Shopify product form for real product data, variants and cart actions.
-- A static [browser preview](preview/index.html) for visual review without a Shopify store.
+- A rebuilt [browser preview](preview/index.html) for visual review without a Shopify store.
 
 The work is aligned with clean landing pages, responsive design and Shopify theme customization. AI-assisted tools helped with image creation and implementation; the concept, layout, editing and integration were reviewed as a portfolio exercise.
 
@@ -37,7 +37,7 @@ The concept imagery uses generic packaging. Replace it with approved product pho
 | `sections/somnus-concept-product.liquid` | Shopify section and product form |
 | `templates/product.somnus-concept.json` | Online Store 2.0 product template |
 | `assets/concept-page.css` | Responsive visual system |
-| `assets/somnus-hero.png`, `assets/somnus-detail.png`, `assets/somnus-product.png` | AI-generated concept imagery |
+| `assets/somnus-hero.jpg`, `assets/somnus-detail.jpg`, `assets/somnus-product.jpg` | AI-generated concept imagery |
 | `preview/index.html` | Standalone visual preview |
 | `layout/theme.liquid`, `templates/`, `config/`, `locales/` | Minimal uploadable Shopify theme structure |
 | `src/` | Rebuilt React/Vite design preview; the Shopify Liquid files remain the deployable theme deliverable |
